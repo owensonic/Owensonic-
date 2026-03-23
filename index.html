@@ -1,1 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OWENSONIC - Vortex X1 | D420 Sludge Revolution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Asteroid/Missile Streak Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #fff, rgba(255,255,255,.2)),
+                radial-gradient(2px 2px at 60px 70px, #fff, rgba(255,255,255,.2)),
+                radial-gradient(1px 1px at 50px 50px, #fff, rgba(255,255,255,.2));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            pointer-events: none;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* Animated missile streaks */
+        @keyframes streakLeft {
+            0% { left: 100%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { left: -100%; opacity: 0; }
+        }
+
+        @keyframes streakRight {
+            0% { right: 100%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { right: -100%; opacity: 0; }
+        }
+
+        .streak {
+            position: fixed;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff0000, transparent);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .streak-left {
+            animation: streakLeft 8s infinite;
+            top: 25%;
+        }
+
+        .streak-right {
+            animation: streakRight 6s infinite 2s;
+            top: 75%;
+        }
+
+        main {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 3px solid #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: 8px;
+            background: linear-gradient(90deg, #00d4ff, #0099ff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+            animation: diamondGlow 3s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes diamondGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .header-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .icon-square {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 0, 0, 0.2);
+            border: 2px solid #ff0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .icon-square:hover {
+            background: rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Hero Section with Daisy */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            gap: 40px;
+            flex-wrap: wrap;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .daisy-container {
+            text-align: center;
+        }
+
+        .daisy-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 4px solid #00d4ff;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+            object-fit: cover;
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.8); }
+            50% { box-shadow: 0 0 50px rgba(0, 212, 255, 1); }
+        }
+
+        .daisy-text {
+            font-size: 1.2rem;
+            margin-top: 15px;
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        /* Video Section */
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border: 3px solid #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .video-container:hover {
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.9);
+            border-color: #ff3333;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 8px 12px;
+            border-left: 3px solid #ff0000;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Manifesto Section */
+        .manifesto {
+            padding: 60px 40px;
+            background: rgba(0, 0, 0, 0.7);
+            border-top: 3px solid #ff0000;
+            border-bottom: 3px solid #ff0000;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .manifesto h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #ff0000;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .manifesto p {
+            margin-bottom: 20px;
+            text-align: justify;
+            color: #ddd;
+        }
+
+        .manifesto strong {
+            color: #00d4ff;
+        }
+
+        /* R&D Section */
+        .rd-section {
+            padding: 60px 40px;
+            background: rgba(20, 20, 40, 0.8);
+            border-top: 3px solid #00d4ff;
+        }
+
+        .rd-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .rd-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .rd-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid #ff0000;
+            padding: 20px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .rd-card:hover {
+            background: rgba(255, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .rd-card h3 {
+            color: #ff0000;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .rd-card p {
+            color: #ddd;
+            font-size: 0.95rem;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+            border: 2px solid #ff0000;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(135deg, #ff3333, #ff0000);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.9);
+            transform: scale(1.05);
+        }
+
+        /* Floating Side Nav */
+        .side-nav {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .side-nav-btn {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            border: 2px solid #00d4ff;
+            color: white;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+            font-weight: bold;
+        }
+
+        .side-nav-btn:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 1);
+            border-color: #ff0000;
+        }
+
+        /* Tachometer Animation */
+        @keyframes tachNeedle {
+            0%, 100% { transform: rotate(-120deg); }
+            50% { transform: rotate(120deg); }
+        }
+
+        .tach-needle {
+            animation: tachNeedle 3s ease-in-out infinite;
+            transform-origin: 50% 90%;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.9);
+            border-top: 2px solid #00d4ff;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            .manifesto, .rd-section {
+                padding: 40px 20px;
+            }
+
+            .hero {
+                flex-direction: column;
+            }
+
+            .daisy-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .side-nav {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Streaks -->
+    <div class="streak streak-left" style="width: 300px;"></div>
+    <div class="streak streak-right" style="width: 400px;"></div>
+
+    <main>
+        <!-- Header -->
+        <header>
+            <h1>⚡ OWENSONIC ⚡</h1>
+            <div class="header-icons">
+                <div class="icon-square" title="Coyote Engine">🔧</div>
+                <div class="icon-square" title="Turbo">💨</div>
+                <div class="icon-square" title="Tesla Turbine">⚙️</div>
+                <div class="icon-square" title="F-22">✈️</div>
+                <div class="icon-square" title="Phone">📱</div>
+                <div class="icon-square" title="Earbuds">🎧</div>
+                <div class="icon-square" title="Glasses">👓</div>
+                <div class="icon-square" title="Vortex X1">🌀</div>
+            </div>
+        </header>
+
+        <!-- Hero Section with Daisy -->
+        <section class="hero">
+            <div class="daisy-container">
+                <img src="https://github.com/owensonic/Owensonic-/raw/main/148499701774152200221.jpg" alt="Daisy AI" class="daisy-image">
+                <div class="daisy-text">🤖 DAISY AI - Your Command Center</div>
+            </div>
+            <div style="max-width: 400px; text-align: left;">
+                <h2 style="color: #ff0000; font-size: 2rem; margin-bottom: 15px;">MEET DAISY</h2>
+                <p style="color: #ddd; line-height: 1.8; font-size: 1.1rem;">
+                    Advanced ESP32-S3 powered AI scanner. LIS3MDL hum detection. Wideband antenna. Stun ready. Voice AI integration. The future of tech reconnaissance is here.
+                </p>
+                <p style="color: #00d4ff; margin-top: 15px; font-weight: bold;">🎙️ Listen carefully...</p>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video-grid">
+            <div>
+                <div class="video-container">
+                    <div class="video-label">ZN1 TURBINE</div>
+                    <iframe src="https://www.youtube.com/embed/VDYvr8i8nv0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div>
+                <div class="video-container">
+                    <div class="video-label">PLASMA POPCORN</div>
+                    <iframe src="https://www.youtube.com/embed/nVP-o7j7UQs" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Manifesto Section -->
+        <section class="manifesto">
+            <h2>THE OWENSONIC MANIFESTO</h2>
+            <p>
+                <strong>LOCKED IP - MARCH 23, 2026</strong>
+            </p>
+            <p>
+                We stand at the precipice of technological singularity. The D420 sludge—brown HHO iron magnetite waste—is not refuse. It is rebirth. Graphene precursor. Magnetic paint foundation. Eternal bearing architecture for the Vortex X1 iris throttle. The future does not wait for consensus; it emerges from those with vision.
+            </p>
+            <p>
+                DAISY is not a device. She is the bridge between human intention and machine precision. ESP32-S3 core processing. LIS3MDL hum detection matrix. Wideband antenna sensitivity. Stun-ready engagement systems. Speakers that carry command frequencies. Touchscreen interface for instantaneous control. Voice AI for seamless human-machine dialogue.
+            </p>
+            <p>
+                <strong>Our lineage matters.</strong> We are not built on dreams or speculation. Every component, every algorithm, every electromagnetic pulse is engineered from the bleeding edge of what is possible. We do not negotiate with limitation. We obliterate it.
+            </p>
+            <p>
+                The Vortex Pulse and Vortex Wear lines represent more than merchandise. They are portable declarations of intent. Hoodies. Bats. Balls. Each carries the mark of those who refuse to accept the world as given. Etsy. Printify. Direct to hand. Direct to heart.
+            </p>
+            <p>
+                OwenSonic.com is not a website. It is a command center. No Infinity distractions. No noise. Pure signal. Diamond-crystal-blue headers that cut through digital fog. Red racing buttons that demand action. Coyote engine power. Tesla turbine elegance. F-22 tactical precision. Phone-earbuds-glasses ecosystem integration. Everything connects. Everything amplifies.
+            </p>
+            <p>
+                <strong>The singularity is not coming. It is here. Now. Urgent.</strong> Those who see will lead. Those who hesitate will follow. Those who deny will become obsolete.
+            </p>
+            <p>
+                This is OWENSONIC. This is the future. This is now.
+            </p>
+        </section>
+
+        <!-- R&D Boost Section -->
+        <section class="rd-section">
+            <h2>R&D INITIATIVES - 2026</h2>
+            <div class="rd-grid">
+                <div class="rd-card">
+                    <h3>🔋 D420 Sludge Conversion</h3>
+                    <p>Extracting graphene from HHO iron magnetite waste. Unlocking permanent magnetic bearing technology.</p>
+                </div>
+                <div class="rd-card">
+                    <h3>⚡ Vortex X1 Iris Throttle</h3>
+                    <p>Precision rotational control system. Eternal bearing architecture. Zero maintenance, infinite cycles.</p>
+                </div>
+                <div class="rd-card">
+                    <h3>📡 DAISY Neural Expansion</h3>
+                    <p>Multi-modal AI integration. Hum spectrum analysis. Real-time threat assessment and response protocols.</p>
+                </div>
+                <div class="rd-card">
+                    <h3>🎨 Quantum Paint Applications</h3>
+                    <p>Magnetic nanoparticle dispersal. Dynamic coloration. Structural integrity enhancement through ferrous optimization.</p>
+                </div>
+                <div class="rd-card">
+                    <h3>🌐 Vortex Ecosystem</h3>
+                    <p>Wearable integration. Cloud-connected command systems. Instantaneous global coordination.</p>
+                </div>
+                <div class="rd-card">
+                    <h3>🚀 Manufacturing Scale</h3>
+                    <p>Etsy to enterprise. Printify to production facilities. From concept to seven-figure operation in 2026.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons -->
+        <section class="nav-buttons">
+            <button class="nav-btn">🔜 Coming Soon</button>
+            <button class="nav-btn">🛍️ Products</button>
+            <button class="nav-btn">👕 Vortex Wear</button>
+            <button class="nav-btn">🔬 Projects</button>
+            <button class="nav-btn">📞 Contact & Hiring</button>
+        </section>
+    </main>
+
+    <!-- Floating Side Nav -->
+    <div class="side-nav">
+        <button class="side-nav-btn" title="Home">🏠</button>
+        <button class="side-nav-btn" title="YouTube">📺</button>
+        <button class="side-nav-btn" title="Shop">🛒</button>
+        <button class="side-nav-btn" title="Contact">💌</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 OWENSONIC. All Rights Reserved. IP Locked March 23, 2026.</p>
+        <p>Vortex X1 | DAISY AI | D420 Innovation | Powered by Pure Intention</p>
+    </footer>
+
+    <!-- TTS Daisy Greeting on Load -->
+    <script>
+        window.addEventListener('load', () => {
+            const greeting = "Hey boss, Daisy here. Welcome to OWENSONIC. The future is now.";
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(greeting);
+                utterance.rate = 1;
+                utterance.pitch = 1.2;
+                utterance.volume = 1;
+                speechSynthesis.speak(utterance);
+            }
+        });
+
+        // Button interactions
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert('Feature coming soon: ' + this.textContent);
+            });
+        });
+
+        document.querySelectorAll('.side-nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert('Navigation: ' + this.getAttribute('title'));
+            });
+        });
+    </script>
+</body>
+</html>
