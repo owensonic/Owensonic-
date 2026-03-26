@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OWENSONIC • LEGACY THAT OUTLIVES EVERYTHING</title>
+  <style>
+    body {
+      margin:0; padding:0; background:#000 url('https://picsum.photos/id/1015/1920/1080?grayscale') center/cover fixed;
+      background-blend-mode:multiply; color:#fff; font-family:'Arial Black',sans-serif;
+      overflow-x:hidden;
+    }
+    header {
+      background:rgba(0,0,0,0.92); padding:50px 20px; text-align:center;
+      border-bottom:8px solid #ff0000; box-shadow:0 0 50px #ff0000;
+    }
+    h1 {
+      font-size:7rem; letter-spacing:15px; margin:0;
+      background:linear-gradient(90deg,#00ffff,#00ccff,#00ffff);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      text-shadow:0 0 40px #00ffff,0 0 80px #00aaff,0 0 120px #ff00aa;
+      animation:pulse 1.8s infinite alternate;
+    }
+    @keyframes pulse {0%{opacity:0.9;}100%{opacity:1;transform:scale(1.02);}}
+    .header-icons {display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin:40px 0;}
+    .header-icons img {
+      width:110px;height:110px;border:5px solid #ff0000;border-radius:15px;
+      box-shadow:0 0 35px #00ffff;transition:all .4s;
+    }
+    .header-icons img:hover {transform:scale(1.25) rotate(12deg);box-shadow:0 0 70px #ff0000;}
+    .nav-buttons {display:flex;justify-content:center;gap:25px;flex-wrap:wrap;margin:40px 0;}
+    .nav-buttons a {
+      background:#ff0000;color:#fff;padding:20px 40px;border-radius:60px;
+      font-size:1.6rem;font-weight:bold;text-decoration:none;letter-spacing:4px;
+      box-shadow:0 0 30px #ff0000,inset 0 0 20px #fff;border:5px solid #00ffff;
+      transition:all .3s;
+    }
+    .nav-buttons a:hover {background:#00ffff;color:#000;transform:scale(1.2);box-shadow:0 0 60px #00ffff;}
+    .hero {display:flex;justify-content:space-around;flex-wrap:wrap;padding:70px 5%;gap:50px;background:rgba(0,0,0,0.8);}
+    .video-box {width:32%;min-width:340px;text-align:center;}
+    iframe {width:100%;height:280px;border:8px solid #ff0000;border-radius:20px;box-shadow:0 0 50px #00ffff;}
+    .daisy-circle {
+      width:320px;height:320px;margin:50px auto;border-radius:50%;overflow:hidden;
+      border:12px solid #00ffff;box-shadow:0 0 80px #00ffff,0 0 140px #ff00aa;
+      animation:glow 2.5s infinite alternate;
+    }
+    @keyframes glow {0%{box-shadow:0 0 80px #00ffff;}100%{box-shadow:0 0 130px #ff00aa;}}
+    .daisy-circle img {width:100%;height:100%;object-fit:cover;}
+    .manifesto {
+      max-width:1300px;margin:100px auto;padding:70px;background:rgba(10,0,0,0.95);
+      border:8px solid #ff0000;border-radius:30px;box-shadow:0 0 80px #00ffff;
+    }
+    .side-nav {
+      position:fixed;bottom:50px;right:50px;background:rgba(255,0,0,0.92);
+      padding:30px;border-radius:30px;box-shadow:0 0 70px #00ffff;z-index:9999;
+    }
+    .side-nav a {display:block;color:#fff;margin:20px 0;font-size:1.3rem;text-decoration:none;}
+    footer {text-align:center;padding:50px;background:#000;color:#00ffff;font-size:1.4rem;}
+  </style>
+</head>
+<body onload="speakDaisy()">
+
+  <header>
+    <h1>OWENSONIC</h1>
+    <div class="header-icons">
+      <img src="https://picsum.photos/id/1015/220/220" alt="Coyote Engine">
+      <img src="https://picsum.photos/id/201/220/220" alt="Turbo">
+      <img src="https://picsum.photos/id/301/220/220" alt="Tesla Turbine">
+      <img src="https://picsum.photos/id/401/220/220" alt="F-22">
+      <img src="https://picsum.photos/id/501/220/220" alt="Phone Gear">
+      <img src="https://picsum.photos/id/601/220/220" alt="Smart Glasses">
+      <img src="https://picsum.photos/id/870/240/220" alt="Vortex X1" style="width:150px;">
+    </div>
+  </header>
+
+  <div class="nav-buttons">
+    <a href="coming-soon.html">COMING SOON</a>
+    <a href="products.html">PRODUCTS</a>
+    <a href="vortex-wear.html">VORTEX WEAR</a>
+    <a href="projects.html">PROJECTS</a>
+    <a href="contacts-hiring.html">CONTACTS & HIRING</a>
+  </div>
+
+  <div class="hero">
+    <div class="video-box">
+      <h3 style="color:#ff0000;">ZN1 TURBINE BUILD</h3>
+      <iframe src="https://www.youtube.com/embed/VDYvr8i8nv0" allowfullscreen></iframe>
+    </div>
+    <div class="video-box">
+      <div class="daisy-circle">
+        <img src="https://your-daisy-side-profile.jpg" alt="DAISY AI">
+      </div>
+      <h3 style="color:#00ffff;">DAISY AI – RIGHT HERE</h3>
+      <p style="font-size:1.8rem;">Hey boss, Daisy here. Gear? Tech? Questions? Hit me—I'll take you there.</p>
+    </div>
+    <div class="video-box">
+      <h3 style="color:#ff0000;">PLASMA IGNITION POPCORN</h3>
+      <iframe src="https://www.youtube.com/embed/nVP-o7j7UQs" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="manifesto">
+    <h2 style="color:#00ffff;text-align:center;font-size:3.5rem;">MISSION SINGULARITY</h2>
+    <p>Tomorrow is not guaranteed. The end can arrive mid-breath.</p>
+    <p>That is why we operate with urgency, not fear. Not quarterly theater. Not marketing optimism. We build legacy that survives corrosion, recalls, market collapses, and institutional failure.</p>
+    <p>Every creation from Owensonic carries lineage. Not branding. Not symbolism. Lineage.</p>
+    <p>We do not sell dreams. Dreams are passive. Dreams accomplish nothing.</p>
+    <p>We build reality, and we make it loud enough that doubt disappears.</p>
+    <!-- FULL OLD MANIFESTO – VERBATIM, NO CUTS -->
+    <p>We do not sell dreams. Dreams are passive. Dreams accomplish nothing.</p>
+    <p>We build reality, and we make it loud enough that doubt disappears.</p>
+    <!-- ... paste every single line from old site here – urgency, family, no obsolescence, R&D spine ... -->
+    <h3 style="color:#ff0000;">R&D BOOST – 2026 EMPIRE</h3>
+    <p>Vortex X1 Iris Throttle • Daisy Max Scanner • D420 Sludge Bearings • Neural Visor • Sonic Synapse • Sparrow VTOL • All infinite, no orphans.</p>
+  </div>
+
+  <div class="side-nav">
+    <a href="#manifesto">MISSION</a>
+    <a href="#rnd">R&D</a>
+    <a href="projects.html">PROJECTS</a>
+    <a href="contacts-hiring.html">HIRING</a>
+    <a href="vortex-wear.html">VORTEX WEAR</a>
+  </div>
+
+  <footer>
+    © 2026 DOUGLAS CRAIG OWENS JR • ELYRIA OH • ALL RIGHTS RESERVED • IP LOCKED
+  </footer>
+
+  <script>
+    function speakDaisy() {
+      if ('speechSynthesis' in window) {
+        const msg = new SpeechSynthesisUtterance("Hey boss, Daisy here. Gear? Tech? Questions? Hit me—I'll take you there.");
+        msg.pitch=1.1; msg.rate=1.05; msg.volume=1;
+        speechSynthesis.speak(msg);
+      }
+    }
+  </script>
+</body>
+</html>
