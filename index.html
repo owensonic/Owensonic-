@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OWENSONIC • LEGACY THAT BURNS FOREVER</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000 url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+      background-blend-mode: multiply;
+      color: #fff;
+      font-family: 'Arial Black', Impact, sans-serif;
+      overflow-x: hidden;
+    }
+    header {
+      background: rgba(0,0,0,0.92);
+      padding: 60px 20px;
+      text-align: center;
+      border-bottom: 10px solid #ff0000;
+      box-shadow: 0 0 60px #ff0000;
+    }
+    h1 {
+      font-size: 8rem;
+      letter-spacing: 18px;
+      margin: 0;
+      background: linear-gradient(90deg, #00ffff, #00ccff, #00ffff, #00aaff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 50px #00ffff, 0 0 100px #00aaff, 0 0 150px #ff00aa;
+      animation: tachPulse 1.5s infinite alternate;
+    }
+    @keyframes tachPulse {
+      0% { transform: scale(1); opacity: 0.95; }
+      100% { transform: scale(1.04); opacity: 1; }
+    }
+    .header-icons {
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      flex-wrap: wrap;
+      margin: 50px 0;
+    }
+    .header-icons img {
+      width: 120px;
+      height: 120px;
+      border: 6px solid #ff0000;
+      border-radius: 18px;
+      box-shadow: 0 0 40px #00ffff;
+      transition: all 0.4s;
+    }
+    .header-icons img:hover {
+      transform: scale(1.3) rotate(15deg);
+      box-shadow: 0 0 80px #ff0000;
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 50px 0;
+      padding: 20px;
+    }
+    .nav-buttons a {
+      background: #ff0000;
+      color: #fff;
+      padding: 22px 45px;
+      border-radius: 70px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-decoration: none;
+      letter-spacing: 5px;
+      box-shadow: 0 0 40px #ff0000, inset 0 0 25px #fff;
+      border: 6px solid #00ffff;
+      transition: all 0.3s;
+    }
+    .nav-buttons a:hover {
+      background: #00ffff;
+      color: #000;
+      transform: scale(1.25);
+      box-shadow: 0 0 80px #00ffff;
+    }
+    .hero {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 80px 5%;
+      gap: 60px;
+      background: rgba(0,0,0,0.85);
+    }
+    .video-box {
+      width: 32%;
+      min-width: 360px;
+      text-align: center;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 10px solid #ff0000;
+      border-radius: 25px;
+      box-shadow: 0 0 60px #00ffff;
+    }
+    .daisy-circle {
+      width: 360px;
+      height: 360px;
+      margin: 60px auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 15px solid #00ffff;
+      box-shadow: 0 0 100px #00ffff, 0 0 180px #ff00aa;
+      animation: daisyGlow 3s infinite alternate;
+    }
+    @keyframes daisyGlow {
+      0% { box-shadow: 0 0 100px #00ffff; }
+      100% { box-shadow: 0 0 160px #ff00aa; }
+    }
+    .daisy-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .manifesto {
+      max-width: 1400px;
+      margin: 120px auto;
+      padding: 80px;
+      background: rgba(10,0,0,0.95);
+      border: 10px solid #ff0000;
+      border-radius: 35px;
+      box-shadow: 0 0 100px #00ffff;
+    }
+    .side-nav {
+      position: fixed;
+      bottom: 60px;
+      right: 60px;
+      background: rgba(255,0,0,0.95);
+      padding: 35px;
+      border-radius: 35px;
+      box-shadow: 0 0 90px #00ffff;
+      z-index: 9999;
+    }
+    .side-nav a {
+      display: block;
+      color: #fff;
+      margin: 25px 0;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      padding: 60px;
+      background: #000;
+      color: #00ffff;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body onload="speakDaisy()">
+
+  <header>
+    <h1>OWENSONIC</h1>
+    <div class="header-icons">
+      <img src="https://picsum.photos/id/1015/240/240" alt="Ford Coyote Engine">
+      <img src="https://picsum.photos/id/201/240/240" alt="Turbo Charger">
+      <img src="https://picsum.photos/id/301/240/240" alt="Tesla Turbine">
+      <img src="https://picsum.photos/id/401/240/240" alt="F-22 Raptor">
+      <img src="https://picsum.photos/id/501/240/240" alt="Phone Camera Earbuds">
+      <img src="https://picsum.photos/id/601/240/240" alt="Smart Glasses">
+      <img src="https://picsum.photos/id/870/260/240" alt="Vortex X1 Throttle" style="width:170px;">
+    </div>
+  </header>
+
+  <div class="nav-buttons">
+    <a href="coming-soon.html">COMING SOON</a>
+    <a href="products.html">PRODUCTS</a>
+    <a href="vortex-wear.html">VORTEX WEAR</a>
+    <a href="projects.html">PROJECTS</a>
+    <a href="contacts-hiring.html">CONTACTS & HIRING</a>
+  </div>
+
+  <div class="hero">
+    <div class="video-box">
+      <h3 style="color:#ff0000; font-size:2.5rem;">ZN1 TURBINE BUILD</h3>
+      <iframe src="https://www.youtube.com/embed/VDYvr8i8nv0" allowfullscreen></iframe>
+    </div>
+    <div class="video-box">
+      <div class="daisy-circle">
+        <img src="https://your-real-daisy-redhead-side-profile.jpg" alt="DAISY AI">
+      </div>
+      <h3 style="color:#00ffff; font-size:2.8rem;">DAISY AI – RIGHT HERE FOR YOU</h3>
+      <p style="font-size:2rem;">Yo boss, it's Daisy. Gear? Tech? Questions? Hit me—I'm takin' you straight there.</p>
+    </div>
+    <div class="video-box">
+      <h3 style="color:#ff0000; font-size:2.5rem;">PLASMA IGNITION POPCORN</h3>
+      <iframe src="https://www.youtube.com/embed/nVP-o7j7UQs" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="manifesto">
+    <h2 style="color:#00ffff; text-align:center; font-size:4rem;">MISSION SINGULARITY</h2>
+    <p>Tomorrow is not guaranteed. The end can arrive mid-breath.</p>
+    <p>That is why we operate with urgency, not fear. Not quarterly theater. Not marketing optimism. We build legacy that survives corrosion, recalls, market collapses, and institutional failure.</p>
+    <p>Every creation from Owensonic carries lineage. Not branding. Not symbolism. Lineage.</p>
+    <p>We do not sell dreams. Dreams are passive. Dreams accomplish nothing.</p>
+    <p>We build reality, and we make it loud enough that doubt disappears.</p>
+    <!-- FULL VERBATIM OLD MANIFESTO TEXT PASTED HERE – ADD THE REST FROM YOUR OLD SITE WORD-FOR-WORD -->
+    <!-- Example continuation: -->
+    <p>We do not chase trends. Trends die. We build systems that refuse to die.</p>
+    <p>Family products. No obsolescence. Infinite support. R&D spine that never bends.</p>
+    <!-- ... insert every single paragraph/line from your old site exactly ... -->
+    <h3 style="color:#ff0000; font-size:3rem;">R&D BOOST – 2026 EMPIRE</h3>
+    <p>Vortex X1 Iris Throttle • Daisy Max Scanner (RF/BT leaks, 60Hz hum, stun-ready) • D420 Sludge Eternal Bearings • Neural Visor Glasses • Sonic Synapse Buds • Sparrow VTOL (ducted fans, Dyson gimbal ±45°) • All infinite, no orphans, no bullshit.</p>
+  </div>
+
+  <div class="side-nav">
+    <a href="#manifesto">MISSION</a>
+    <a href="#rnd">R&D</a>
+    <a href="projects.html">PROJECTS</a>
+    <a href="contacts-hiring.html">HIRING</a>
+    <a href="vortex-wear.html">VORTEX WEAR</a>
+  </div>
+
+  <footer>
+    © 2026 DOUGLAS CRAIG OWENS JR • ELYRIA, OHIO • ALL RIGHTS RESERVED • IP LOCKED DOWN TIGHT
+  </footer>
+
+  <script>
+    function speakDaisy() {
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance("Yo boss, it's Daisy. Gear? Tech? Questions? Hit me—I'm takin' you straight there.");
+        utterance.pitch = 1.1;
+        utterance.rate = 1.05;
+        utterance.volume = 1;
+        speechSynthesis.speak(utterance);
+      }
+    }
+  </script>
+</body>
+</html>
